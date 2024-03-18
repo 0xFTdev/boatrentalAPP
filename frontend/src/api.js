@@ -10,3 +10,5 @@ export const postShip = (newShip) => {
     body: newShip,
   }).then((response) => response.json());
 };
+
+export const patchShip = "test";
