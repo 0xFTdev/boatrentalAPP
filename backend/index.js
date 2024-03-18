@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
+import morgan from "morgan";
 
 import shipRouter from "./controller/ships.js";
 
@@ -16,6 +17,7 @@ const corsOptions = {
 };
 
 app.use(express());
+app.use(morgan("tiny"));
 app.use(cors(corsOptions));
 app.use("/ships", shipRouter);
 
