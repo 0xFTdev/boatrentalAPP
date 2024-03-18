@@ -45,4 +45,34 @@ router.post("/", mult.none(), async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleteResult = await Ship.deleteOne({ _id: req.params.id });
+    if (deleteResult.deletedCount === 0) {
+      return res.status(404).json({ error: "Ship not found" });
+    }
+    res.json({ message: "Ship deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting ship:", error);
+    res.status(500).json({ error: "Failed to delete ship" });
+  }
+});
+
+router.patch("/:id", mult.none(), async (req, res) => {
+  try {
+    const shipId = req.params.id;
+    const updates = req.body;
+    const existingShip = await Ship.findById(shipId);
+    if (!existingShip) {
+      return res.status(404).json({ error: "Ship not found" });
+    }
+    Object.assign(existingShip, updates);
+    await existingShip.save();
+    res.json(existingShip);
+  } catch (error) {
+    console.error("Error editing ship:", error);
+    res.status(500).json({ error: "Failed to edit ship" });
+  }
+});
+
 export default router;
