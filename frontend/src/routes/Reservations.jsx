@@ -29,12 +29,16 @@ const Reservations = () => {
                       {booking.ship.name}
                     </h3>
                   </div>
-                  <p className="text-sm font-medium text-white">
-                    Booking Start: {booking.startDate}
-                  </p>
-                  <p className="text-sm font-medium text-white">
-                    Booking End: {booking.endDate}
-                  </p>
+                  <div>
+                    <p className="text-sm font-medium text-white">
+                      Booking Start:
+                      {new Date(booking.startDate).toLocaleDateString("de")}
+                    </p>
+                    <p className="text-sm font-medium text-white">
+                      Booking End:
+                      {new Date(booking.endDate).toLocaleDateString("de")}
+                    </p>
+                  </div>
                 </div>
               </div>
             </Link>

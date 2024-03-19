@@ -11,6 +11,13 @@ export const postShip = (newShip) => {
   }).then((response) => response.json());
 };
 
+export const postReservation = (newReservation) => {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/reservations`, {
+    method: "POST",
+    body: newReservation,
+  }).then((response) => response.json());
+};
+
 export const getBookings = () => {
   return fetch(`${import.meta.env.VITE_BACKEND_URL}/reservations`).then(
     (response) => response.json()
@@ -19,6 +26,12 @@ export const getBookings = () => {
 
 export const deleteShipDB = (id) => {
   return fetch(`${import.meta.env.VITE_BACKEND_URL}/ships/${id}`, {
+    method: "DELETE",
+  });
+};
+
+export const deleteBookingDB = (id) => {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/reservations/${id}`, {
     method: "DELETE",
   });
 };

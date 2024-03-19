@@ -1,5 +1,12 @@
 import { createContext, useContext, useState } from "react";
-import { getShips, postShip, deleteShipDB, getBookings } from "./api";
+import {
+  getShips,
+  postShip,
+  postReservation,
+  deleteShipDB,
+  deleteBookingDB,
+  getBookings,
+} from "./api";
 
 const StateContext = createContext({
   ships: [],
@@ -30,10 +37,27 @@ export const AppStateProvider = ({ children }) => {
     }
   };
 
+  const addReservation = async (reservationData) => {
+    try {
+      await postReservation(reservationData);
+      updateBookings();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const addShip = async (shipData) => {
     try {
       await postShip(shipData);
       updateShips();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const deleteBooking = async (id) => {
+    try {
+      await deleteBookingDB(id);
     } catch (err) {
       console.error(err);
     }
@@ -54,7 +78,9 @@ export const AppStateProvider = ({ children }) => {
         updateShips,
         updateBookings,
         addShip,
+        addReservation,
         deleteShip,
+        deleteBooking,
         bookings,
       }}
     >
