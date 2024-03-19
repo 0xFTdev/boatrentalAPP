@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useAppState } from "../context";
+import Nav from "./Nav";
 
 const AddShip = () => {
   const { addShip } = useAppState();
@@ -13,6 +14,7 @@ const AddShip = () => {
   };
   return (
     <>
+      <Nav />
       <form
         className="flex flex-col p-3 gap-2 justify-items-center items-center"
         ref={formRef}

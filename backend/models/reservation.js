@@ -2,11 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 const reservationSchema = new Schema({
   startDate: {
-    type: String,
+    type: Date,
     required: true,
   },
   endDate: {
-    type: String,
+    type: Date,
     required: true,
   },
   ship: {

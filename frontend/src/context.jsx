@@ -1,19 +1,46 @@
 import { createContext, useContext, useState } from "react";
-import { getShips, postShip, patchShip, deleteShipDB } from "./api";
+import {
+  getShips,
+  postShip,
+  postReservation,
+  deleteShipDB,
+  deleteBookingDB,
+  getBookings,
+} from "./api";
 
 const StateContext = createContext({
   ships: [],
+  bookings: [],
 });
 
 export const useAppState = () => useContext(StateContext);
 
 export const AppStateProvider = ({ children }) => {
   const [ships, setShips] = useState([]);
+  const [bookings, setBookings] = useState([]);
+
   const updateShips = async () => {
     try {
-      const newShips = await getShips();
-      console.log({ newShips });
-      setShips(newShips);
+      const ships = await getShips();
+      setShips(ships);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const updateBookings = async () => {
+    try {
+      const bookings = await getBookings();
+      setBookings(bookings);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const addReservation = async (reservationData) => {
+    try {
+      await postReservation(reservationData);
+      updateBookings();
     } catch (err) {
       console.error(err);
     }
@@ -28,13 +55,9 @@ export const AppStateProvider = ({ children }) => {
     }
   };
 
-  const incrementRockets = async (name) => {
-    const currentRockets = Number(
-      ships.find((ship) => ship.name === name).rockets
-    );
+  const deleteBooking = async (id) => {
     try {
-      await patchShip(name, { rockets: currentRockets + 1 });
-      updateShips();
+      await deleteBookingDB(id);
     } catch (err) {
       console.error(err);
     }
@@ -50,7 +73,16 @@ export const AppStateProvider = ({ children }) => {
 
   return (
     <StateContext.Provider
-      value={{ ships, updateShips, addShip, deleteShip, incrementRockets }}
+      value={{
+        ships,
+        updateShips,
+        updateBookings,
+        addShip,
+        addReservation,
+        deleteShip,
+        deleteBooking,
+        bookings,
+      }}
     >
       {children}
     </StateContext.Provider>
