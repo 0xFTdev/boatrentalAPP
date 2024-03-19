@@ -9,7 +9,7 @@ const Reservations = () => {
       <Nav />
       <main className="bg-black p-6">
         <h2 className="text-2xl font-bold tracking-tight text-white">
-          Your Bookings
+          Your current Bookings
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {bookings.map((booking) => (
