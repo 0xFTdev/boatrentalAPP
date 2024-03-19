@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddShip from "./components/AddShip";
+import AddReservation from "./components/AddReservation";
 import Home from "./routes/Home";
 import ShipDetail from "./routes/ShipDetail";
 import Reservations from "./routes/Reservations";
@@ -26,6 +27,8 @@ const router = createBrowserRouter([
     path: "/addship",
     element: <AddShip />,
   },
+  { path: "/addreservation", element: <AddReservation /> },
+
   {
     path: "/reservations",
     element: <Reservations />,
@@ -37,9 +40,10 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const { updateShips } = useAppState();
+  const { updateShips, updateBookings } = useAppState();
   useEffect(() => {
     updateShips();
+    updateBookings();
   }, []);
   return (
     <>

@@ -4,7 +4,6 @@ import { useAppState } from "../context";
 
 const ShipGallery = () => {
   const shipsState = useAppState();
-  console.log(shipsState);
   return (
     <>
       <Nav />
@@ -26,10 +25,8 @@ const ShipGallery = () => {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-white">
-                      <a href={`/ships/${ship._id}`}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {ship.name}
-                      </a>
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {ship.name}
                     </h3>
                     <p className="mt-1 text-sm text-white">
                       Construction year:{ship.baujahr}

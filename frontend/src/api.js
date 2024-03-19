@@ -1,5 +1,4 @@
 export const getShips = () => {
-  console.log(import.meta.env.VITE_BACKEND_URL);
   return fetch(`${import.meta.env.VITE_BACKEND_URL}/ships`).then((response) =>
     response.json()
   );
@@ -12,7 +11,11 @@ export const postShip = (newShip) => {
   }).then((response) => response.json());
 };
 
-export const patchShip = "test";
+export const getBookings = () => {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/reservations`).then(
+    (response) => response.json()
+  );
+};
 
 export const deleteShipDB = (id) => {
   return fetch(`${import.meta.env.VITE_BACKEND_URL}/ships/${id}`, {
