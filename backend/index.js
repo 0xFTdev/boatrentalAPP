@@ -13,7 +13,7 @@ const app = express();
 const PORT = 3000;
 
 const corsOptions = {
-  origin: process.env.BACKEND_URL,
+  origin: process.env.FRONTEND_URL,
   optionsSuccessStatus: 200,
 };
 

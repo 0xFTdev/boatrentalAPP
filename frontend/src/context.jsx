@@ -11,11 +11,14 @@ export const AppStateProvider = ({ children }) => {
   const [ships, setShips] = useState([]);
   const updateShips = async () => {
     try {
-      const ships = setShips(await getShips());
+      const newShips = await getShips();
+      console.log({ newShips });
+      setShips(newShips);
     } catch (err) {
       console.error(err);
     }
   };
+
   const addShip = async (shipData) => {
     try {
       await postShip(shipData);
