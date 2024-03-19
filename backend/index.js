@@ -12,8 +12,12 @@ await mongoose.connect(process.env.MONGODB_URI);
 const app = express();
 const PORT = 3000;
 
+// const corsOptions = {
+//   origin: process.env.BACKEND_URL,
+//   optionsSuccessStatus: 200,
+// };
 const corsOptions = {
-  origin: process.env.BACKEND_URL,
+  origin: "http://localhost:5173",
   optionsSuccessStatus: 200,
 };
 

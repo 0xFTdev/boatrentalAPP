@@ -12,10 +12,20 @@ export const AppStateProvider = ({ children }) => {
   const updateShips = async () => {
     try {
       const ships = setShips(await getShips());
+  
     } catch (err) {
       console.error(err);
     }
   };
+
+
+  console.log("hier fetch data",ships);
+
+
+
+
+
+
   const addShip = async (shipData) => {
     try {
       await postShip(shipData);
