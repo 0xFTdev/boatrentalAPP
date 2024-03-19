@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import { useAppState } from "../context";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 const ShipDetail = () => {
-  const { ships } = useAppState();
+  const { ships, deleteShip } = useAppState();
+  const navigate = useNavigate();
 
   const id = useParams();
 
   const detailShip = ships.filter((ship) => {
     return ship._id === id.id;
   });
+
+  const handleDelete = async () => {
+    await deleteShip(detailShip[0]?._id);
+    navigate("/ships");
+  };
 
   return (
     <>
@@ -37,6 +42,17 @@ const ShipDetail = () => {
             alt={detailShip[0]?.name}
             className="aspect-video h-full w-full object-cover object-center"
           />
+          <Link to={"/"}>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Edit Ship
+            </button>
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Delete Ship
+          </button>
         </div>
       </main>
     </>

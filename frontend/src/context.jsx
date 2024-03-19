@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getShips, postShip, patchShip } from "./api";
+import { getShips, postShip, patchShip, deleteShipDB } from "./api";
 
 const StateContext = createContext({
   ships: [],
@@ -40,9 +40,17 @@ export const AppStateProvider = ({ children }) => {
     }
   };
 
+  const deleteShip = async (id) => {
+    try {
+      await deleteShipDB(id);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <StateContext.Provider
-      value={{ ships, updateShips, addShip, incrementRockets }}
+      value={{ ships, updateShips, addShip, deleteShip, incrementRockets }}
     >
       {children}
     </StateContext.Provider>
