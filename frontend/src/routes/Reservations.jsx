@@ -13,12 +13,12 @@ const Reservations = () => {
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {bookings.map((booking) => (
-            <Link key={booking.ship._id} to={`${booking._id}`}>
+            <Link key={booking.ship?._id} to={`${booking?._id}`}>
               <div className="group relative">
                 <div className="aspect-video w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-video group-hover:opacity-75 ">
                   <img
-                    src={booking.ship.imageUrl}
-                    alt={booking.ship.name}
+                    src={booking.ship?.imageUrl}
+                    alt={booking.ship?.name}
                     className="aspect-video h-full w-full object-cover object-center"
                   />
                 </div>
@@ -26,17 +26,17 @@ const Reservations = () => {
                   <div>
                     <h3 className="text-sm text-white">
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {booking.ship.name}
+                      {booking.ship?.name}
                     </h3>
                   </div>
                   <div>
                     <p className="text-sm font-medium text-white">
                       Booking Start:
-                      {new Date(booking.startDate).toLocaleDateString("de")}
+                      {new Date(booking?.startDate).toLocaleDateString("de")}
                     </p>
                     <p className="text-sm font-medium text-white">
                       Booking End:
-                      {new Date(booking.endDate).toLocaleDateString("de")}
+                      {new Date(booking?.endDate).toLocaleDateString("de")}
                     </p>
                   </div>
                 </div>
