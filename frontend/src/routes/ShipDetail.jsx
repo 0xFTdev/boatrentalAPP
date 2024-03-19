@@ -4,7 +4,7 @@ import { useAppState } from "../context";
 import { useParams, useNavigate } from "react-router-dom";
 
 const ShipDetail = () => {
-  const { ships, deleteShip } = useAppState();
+  const { ships, deleteShip, updateShips } = useAppState();
   const navigate = useNavigate();
 
   const id = useParams();
@@ -15,6 +15,7 @@ const ShipDetail = () => {
 
   const handleDelete = async () => {
     await deleteShip(detailShip[0]?._id);
+    await updateShips();
     navigate("/ships");
   };
 
