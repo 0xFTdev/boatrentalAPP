@@ -13,7 +13,11 @@ const AddShip = () => {
   };
   return (
     <>
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col p-3 gap-2 justify-items-center items-center"
+        ref={formRef}
+        onSubmit={handleSubmit}
+      >
         <label>
           <p>Name of Spaceship</p>
           <input
@@ -68,6 +72,12 @@ const AddShip = () => {
             placeholder="Type of Ship"
           />
         </label>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          type="submit"
+        >
+          Add Ship
+        </button>
       </form>
     </>
   );
