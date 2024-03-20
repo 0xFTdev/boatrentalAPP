@@ -9,7 +9,7 @@ const ShipGallery = () => {
       <Nav />
 
       {shipsState ? (
-        <main className="bg-black p-6">
+        <main className="flex flex-col gap-6 bg-black p-6">
           <h2 className="text-2xl font-bold tracking-tight text-white">
             Our Space Ships Colection
           </h2>
@@ -30,9 +30,6 @@ const ShipGallery = () => {
                         <span aria-hidden="true" className="absolute inset-0" />
                         {ship.name}
                       </h3>
-                      <p className="mt-1 text-sm text-white">
-                        Construction year:{ship.baujahr}
-                      </p>
                     </div>
                     <p className="text-sm font-medium text-white">
                       {ship.shipType}

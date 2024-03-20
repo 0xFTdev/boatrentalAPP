@@ -7,7 +7,7 @@ const Reservations = () => {
   return (
     <>
       <Nav />
-      <main className="bg-black p-6">
+      <main className="bg-black p-6 flex flex-col gap-6">
         <h2 className="text-2xl font-bold tracking-tight text-white">
           Your current Bookings
         </h2>
