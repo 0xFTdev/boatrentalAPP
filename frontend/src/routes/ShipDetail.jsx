@@ -7,10 +7,10 @@ const ShipDetail = () => {
   const { ships, deleteShip, updateShips } = useAppState();
   const navigate = useNavigate();
 
-  const id = useParams();
+  const { id } = useParams();
 
   const detailShip = ships.filter((ship) => {
-    return ship._id === id.id;
+    return ship._id === id;
   });
 
   const handleDelete = async () => {
@@ -43,7 +43,7 @@ const ShipDetail = () => {
             alt={detailShip[0]?.name}
             className="aspect-video h-full w-full object-cover object-center"
           />
-          <Link to={"/"}>
+          <Link to={`/ships/${id}/edit`}>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Edit Ship
             </button>

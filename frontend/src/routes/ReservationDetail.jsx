@@ -7,10 +7,10 @@ const ReservationDetail = () => {
   const { bookings, deleteBooking, updateBookings } = useAppState();
   const navigate = useNavigate();
 
-  const id = useParams();
+  const { id } = useParams();
 
   const detailBooking = bookings.filter((booking) => {
-    return booking._id === id.id;
+    return booking._id === id;
   });
 
   const handleDelete = async () => {
@@ -41,7 +41,7 @@ const ReservationDetail = () => {
 
             <p className="mt-4 text-white">{detailBooking[0]?.ship.shipType}</p>
           </div>
-          <Link to={"/"}>
+          <Link to={`/reservations/${id}/edit`}>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               Edit Booking
             </button>

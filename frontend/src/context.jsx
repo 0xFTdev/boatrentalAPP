@@ -6,6 +6,8 @@ import {
   deleteShipDB,
   deleteBookingDB,
   getBookings,
+  editShipDB,
+  editReservationDB,
 } from "./api";
 
 const StateContext = createContext({
@@ -71,6 +73,24 @@ export const AppStateProvider = ({ children }) => {
     }
   };
 
+  const editShip = async (id, patchData) => {
+    try {
+      await editShipDB(id, patchData);
+      await updateShips();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const editReservation = async (id, patchData) => {
+    try {
+      await editReservationDB(id, patchData);
+      await updateBookings();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -82,6 +102,9 @@ export const AppStateProvider = ({ children }) => {
         deleteShip,
         deleteBooking,
         bookings,
+        editShipDB,
+        editShip,
+        editReservation,
       }}
     >
       {children}

@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddShip from "./components/AddShip";
+import EditShip from "./components/EditShip";
 import AddReservation from "./components/AddReservation";
 import Home from "./routes/Home";
 import ShipDetail from "./routes/ShipDetail";
@@ -9,6 +10,7 @@ import Reservations from "./routes/Reservations";
 import ShipGallery from "./routes/ShipGallery";
 import ReservationDetail from "./routes/ReservationDetail";
 import { useAppState } from "./context";
+import EditReservation from "./components/EditReservation";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,9 @@ const router = createBrowserRouter([
     path: "/addship",
     element: <AddShip />,
   },
+  { path: "/ships/:id/edit", element: <EditShip /> },
+  { path: "/reservations/:id/edit", element: <EditReservation /> },
+
   { path: "/addreservation", element: <AddReservation /> },
 
   {

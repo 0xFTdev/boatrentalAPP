@@ -35,3 +35,17 @@ export const deleteBookingDB = (id) => {
     method: "DELETE",
   });
 };
+
+export const editShipDB = (id, patchData) => {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/ships/${id}`, {
+    method: "PATCH",
+    body: patchData,
+  });
+};
+
+export const editReservationDB = (id, patchData) => {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/reservations/${id}`, {
+    method: "PATCH",
+    body: patchData,
+  });
+};
