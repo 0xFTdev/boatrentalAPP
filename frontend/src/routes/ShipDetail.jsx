@@ -33,9 +33,17 @@ const ShipDetail = () => {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {detailShip[0]?.name}
             </h2>
-            <p>{detailShip[0]?.serialNumber}</p>
+            <p>Serial Number: {detailShip[0]?.serialNumber}</p>
 
-            <p className="mt-4 text-white">{detailShip[0]?.shipType}</p>
+            <p className="mt-4 text-white">
+              Ship Type: {detailShip[0]?.shipType}
+            </p>
+            <p className="mt-1 text-sm text-white">
+              Construction year: {detailShip[0]?.baujahr}
+            </p>
+            <p className="mt-1 text-sm text-white">
+              Material: {detailShip[0]?.material}
+            </p>
           </div>
 
           <img
