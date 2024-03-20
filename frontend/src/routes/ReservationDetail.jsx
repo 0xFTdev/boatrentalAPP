@@ -23,10 +23,6 @@ const ReservationDetail = () => {
     <>
       <Nav />
       <main>
-        <div>
-          <p>Start Date:{detailBooking[0]?.startDate}</p>
-          <p>End Date:{detailBooking[0]?.endDate}</p>
-        </div>
         <img
           src={detailBooking[0]?.ship.imageUrl}
           alt={detailBooking[0]?.ship.name}
@@ -37,21 +33,34 @@ const ReservationDetail = () => {
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {detailBooking[0]?.ship.name}
             </h2>
-            <p>{detailBooking[0]?.ship.serialNumber}</p>
+            <div>
+              <p>
+                Start Date:{" "}
+                {new Date(detailBooking[0]?.startDate).toLocaleDateString("de")}
+              </p>
+              <p>
+                End Date:{" "}
+                {new Date(detailBooking[0]?.endDate).toLocaleDateString("de")}
+              </p>
+            </div>
+            <p>Serial Number: {detailBooking[0]?.ship.serialNumber}</p>
 
-            <p className="mt-4 text-white">{detailBooking[0]?.ship.shipType}</p>
+            <p className="mt-4 text-white">
+              Ship Type: {detailBooking[0]?.ship.shipType}
+            </p>
           </div>
-          <Link to={`/reservations/${id}/edit`}>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Edit Booking
-            </button>
-          </Link>
-          <button
-            onClick={handleDelete}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Delete Booking
-          </button>
+          <div className="flex flex-col gap-3">
+            <Link to={`/reservations/${id}/edit`}>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Edit Booking
+              </button>
+            </Link>
+            <Link onClick={handleDelete}>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Delete Booking
+              </button>
+            </Link>
+          </div>
         </div>
       </main>
     </>

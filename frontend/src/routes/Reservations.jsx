@@ -31,11 +31,11 @@ const Reservations = () => {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-white">
-                      Booking Start:
+                      Start:
                       {new Date(booking?.startDate).toLocaleDateString("de")}
                     </p>
                     <p className="text-sm font-medium text-white">
-                      Booking End:
+                      End:
                       {new Date(booking?.endDate).toLocaleDateString("de")}
                     </p>
                   </div>
