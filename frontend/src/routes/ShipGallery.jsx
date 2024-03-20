@@ -11,7 +11,7 @@ const ShipGallery = () => {
       {shipsState ? (
         <main className="flex flex-col gap-6 bg-black p-6">
           <h2 className="text-2xl font-bold tracking-tight text-white">
-            Our Space Ships Colection
+            Our fine selection of Space Ships
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {shipsState.ships.map((ship) => (
