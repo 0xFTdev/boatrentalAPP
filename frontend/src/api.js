@@ -1,3 +1,9 @@
+export const getCounter = () => {
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}/counter`).then((response) =>
+    response.json()
+  );
+};
+
 export const getShips = () => {
   return fetch(`${import.meta.env.VITE_BACKEND_URL}/ships`).then((response) =>
     response.json()

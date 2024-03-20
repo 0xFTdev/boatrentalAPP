@@ -4,7 +4,8 @@ import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 
 const AddReservation = () => {
-  const { addReservation, ships, updateBookings } = useAppState();
+  const { addReservation, ships, updateBookings, updateCounter } =
+    useAppState();
   const navigate = useNavigate();
   const formRef = useRef();
 
@@ -16,6 +17,7 @@ const AddReservation = () => {
     await addReservation(formData);
     formRef.current.reset();
     await updateBookings();
+    await updateCounter();
     navigate("/reservations");
   };
 

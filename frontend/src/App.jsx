@@ -45,10 +45,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const { updateShips, updateBookings } = useAppState();
+  const { updateShips, updateBookings, updateCounter } = useAppState();
   useEffect(() => {
     updateShips();
     updateBookings();
+    updateCounter();
   }, []);
   return (
     <>
