@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import {
   getShips,
+  getCounter,
   postShip,
   postReservation,
   deleteShipDB,
@@ -20,6 +21,16 @@ export const useAppState = () => useContext(StateContext);
 export const AppStateProvider = ({ children }) => {
   const [ships, setShips] = useState([]);
   const [bookings, setBookings] = useState([]);
+  const [counter, setCounter] = useState([]);
+
+  const updateCounter = async () => {
+    try {
+      const counter = await getCounter();
+      setCounter(counter);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const updateShips = async () => {
     try {
@@ -105,6 +116,8 @@ export const AppStateProvider = ({ children }) => {
         editShipDB,
         editShip,
         editReservation,
+        counter,
+        updateCounter,
       }}
     >
       {children}
