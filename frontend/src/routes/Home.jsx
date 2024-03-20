@@ -3,7 +3,6 @@ import { useAppState } from "../context";
 
 const Home = () => {
   const { counter } = useAppState();
-  console.log(counter);
   return (
     <>
       <Nav />
