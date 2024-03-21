@@ -4,7 +4,8 @@ import { useAppState } from "../context";
 import { useParams, useNavigate } from "react-router-dom";
 
 const ReservationDetail = () => {
-  const { bookings, deleteBooking, updateBookings } = useAppState();
+  const { bookings, deleteBooking, updateBookings, updateCounter } =
+    useAppState();
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -16,6 +17,7 @@ const ReservationDetail = () => {
   const handleDelete = async () => {
     await deleteBooking(detailBooking[0]?._id);
     await updateBookings();
+    await updateCounter();
     navigate("/reservations");
   };
 
